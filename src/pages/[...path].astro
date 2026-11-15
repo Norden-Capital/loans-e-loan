@@ -1,0 +1,12 @@
+---
+/** Every page of app/ at its old URL (see lib/compat/router.tsx). */
+import Document from "@/src/components/Document.astro";
+import { pagePaths, renderPage } from "@/lib/compat/router";
+
+export const getStaticPaths = pagePaths;
+
+const { file, params } = Astro.props;
+const page = await renderPage(file, params);
+---
+
+<Document page={page} />

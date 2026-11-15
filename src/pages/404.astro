@@ -1,0 +1,9 @@
+---
+/** The old app/not-found.tsx (inside the root layout). */
+import Document from "@/src/components/Document.astro";
+import { renderNotFound } from "@/lib/compat/router";
+
+const page = await renderNotFound();
+---
+
+<Document page={page} />

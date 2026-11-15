@@ -38,6 +38,7 @@ const pageLastModified = {
   comparisons: "2026-07-21", // /resources/comparisons and every comparison
   tools: "2026-07-21", // /resources/tools
   faq: "2026-07-18", // /resources/faq
+  unsubscribe: "2026-11-15", // /unsubscribe
 };
 
 type PageGroup = keyof typeof pageLastModified;
@@ -140,6 +141,7 @@ export function getSitemapEntries(section: SitemapSection): MetadataRoute.Sitema
     pageEntry("/contact", "contact"),
     pageEntry("/privacy-policy", "privacyPolicy"),
     pageEntry("/terms-of-use", "termsOfUse"),
+    pageEntry("/unsubscribe", "unsubscribe"),
   ];
 }
 

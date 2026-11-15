@@ -1,0 +1,30 @@
+---
+/**
+ * Writes a page rendered by lib/compat/router.tsx: the <html> and <body>
+ * attributes and the head in the old order (preloads, then the stylesheet
+ * Astro adds, then title and metadata, then the layout's own head tags).
+ */
+import "@/src/styles/fonts.css";
+import "@/app/globals.css";
+import type { Rendered } from "@/lib/compat/router";
+
+interface Props {
+  page: Rendered;
+}
+const { page } = Astro.props;
+---
+
+<!doctype html>
+<html {...page.htmlAttrs}>
+  <head>
+    <Fragment set:html={page.headStart} />
+    <Fragment set:html={page.headMeta} />
+    <Fragment set:html={page.headEnd} />
+  </head>
+  <body {...page.bodyAttrs}>
+    <Fragment set:html={page.body} />
+    <script>
+      import "@/lib/compat/islands-client";
+    </script>
+  </body>
+</html>
